@@ -1,0 +1,14 @@
+*
+
+!.gitignore
+
+!.vscode/
+!.vscode/**
+
+!err.txt
+!in.txt
+!out.txt
+
+!_template.cpp
+!lib/
+!lib/**

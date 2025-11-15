@@ -1,0 +1,82 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build C++",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "${workspaceFolder}/${relativeFileDirname}/${fileBasenameNoExtension}.cpp",
+                "-o",
+                "${workspaceFolder}/_.out",
+                "-std=c++20"
+            ]
+        },
+        {
+            "label": "Run C++",
+            "type": "shell",
+            "command": "${workspaceFolder}/_.out",
+            "args": [
+                "<",
+                "${workspaceFolder}/in.txt",
+                ">",
+                "${workspaceFolder}/out.txt",
+                "2>",
+                "${workspaceFolder}/err.txt"
+            ]
+        },
+        {
+            "label": "Build and Run",
+            "type": "shell",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "Build C++",
+                "Run C++",
+            ]
+        },
+        /*
+        {
+            "label": "New Problem",
+            "type": "shell",
+            "command": "cp",
+            "args": [
+                "${workspaceFolder}/_template.cpp",
+                "${workspaceFolder}/${input:contestName}/${input:problemName}.cpp"
+            ]
+        },
+        {
+            "label": "Open Problem",
+            "type": "shell",
+            "command": "code",
+            "args": [
+                "-r",
+                "-g",
+                "${workspaceFolder}/${input:contestName}/${input:problemName}.cpp:77:4",
+            ]
+        },
+        {
+            "label": "New Problem with Open",
+            "type": "shell",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "New Problem",
+                "Open Problem",
+            ]
+        }
+        */
+    ],
+    "inputs": [
+        {
+            "type": "promptString",
+            "id": "contestName",
+            "description": "Name your contest.",
+            "default": "ABC"
+        },
+        {
+            "type": "promptString",
+            "id": "problemName",
+            "description": "Name your problem.",
+            "default": "A"
+        }
+    ]
+}
