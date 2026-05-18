@@ -1,0 +1,102 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build C++",
+            "type": "process",
+            "command": "g++",
+            "args": [
+                "${workspaceFolder}/${relativeFileDirname}/${fileBasenameNoExtension}.cpp",
+                "-o",
+                "${workspaceFolder}/.out",
+                "-std=c++2b"
+            ]
+        },
+        {
+            "label": "Run C++",
+            "type": "shell",
+            "command": "${workspaceFolder}/.out",
+            "args": [
+                "<",
+                "${workspaceFolder}/in.txt",
+                ">",
+                "${workspaceFolder}/out.txt",
+                "2>",
+                "${workspaceFolder}/err.txt"
+            ]
+        },
+        {
+            "label": "Build & Run C++",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "Build C++",
+                "Run C++"
+            ]
+        },
+        {
+            "label": "Copy Template",
+            "type": "shell",
+            "command": "cp",
+            "args": [
+                "${workspaceFolder}/_template.cpp",
+                "${workspaceFolder}/${input:contestName}/${input:problemName}.cpp"
+            ],
+
+            "windows": {
+                "command": "echo",
+                "args": [
+                    "F",
+                    "|",
+                    "xcopy",
+                    "${workspaceFolder}\\_template.cpp",
+                    "${workspaceFolder}\\${input:contestName}\\${input:problemName}.cpp",
+                    "/y",
+                    "/i"
+                ]
+            }
+        },
+        {
+            "label": "Open Problem",
+            "type": "shell",
+            "command": "code",
+            "args": [
+                "-r",
+                "-g",
+                "${workspaceFolder}/${input:contestName}/${input:problemName}.cpp:103:4",
+            ]
+        },
+        {
+            "label": "New Problem",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "Copy Template",
+                "Open Problem",
+            ]
+        }
+    ],
+    "inputs": [
+        {
+            "type": "promptString",
+            "id": "contestName",
+            "description": "Name your contest.",
+            "default": "ABC"
+        },
+        {
+            "type": "pickString",
+            "id": "problemName",
+            "description": "Name your problem.",
+            "options": [
+                "A",
+                "B",
+                "C",
+                "D",
+                "E",
+                "F",
+                "G",
+                "H",
+                "Ex"
+            ],
+            "default": "A"
+        }
+    ]
+}
