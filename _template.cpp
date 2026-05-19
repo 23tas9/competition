@@ -15,6 +15,9 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <unordered_map>
+#include <set>
+#include <unordered_set>
 
 #include <ranges>
 
@@ -26,6 +29,10 @@ using std::cout;
 using std::cin;
 using std::string;
 using std::vector;
+using std::map;
+using std::unordered_map;
+using std::set;
+using std::unordered_set;
 
 using ll = long long;
 template<typename T>
