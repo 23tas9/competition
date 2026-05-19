@@ -27,8 +27,13 @@ using namespace std::numbers;
 
 using std::cout;
 using std::cin;
+using std::cerr;
+using std::flush;
+using std::endl;
+using std::print;
 using std::string;
 using std::vector;
+using std::pair;
 using std::map;
 using std::unordered_map;
 using std::set;
@@ -39,7 +44,9 @@ template<typename T>
 using Graph = vector<vector<T>>;
 
 template<typename T>
-constexpr T Inf() { return numeric_limits<T>::infinity(); }
+constexpr T Inf() { return std::numeric_limits<T>::infinity(); }
+template<typename T>
+constexpr pair<T, T> LR() { return { std::numeric_limits<T>::lowest(), std::numeric_limits<T>::max() }; }
 
 constexpr int64_t Now() { return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count(); }
 
@@ -47,11 +54,11 @@ constexpr int64_t Now() { return std::chrono::duration_cast<std::chrono::millise
 #define YesNo(flag) cout << (flag ? "Yes" : "No") << endl;
 #define yesno(flag) cout << (flag ? "yes" : "no") << endl;
 
-#define Input(n) int n; cin >> n;
-#define Inputs(n, v, type) vector<type> v(n); for(auto& e : v) cin >> e;
-#define GInputs(n, g, type) Graph<type> g(n, vector<type>(n)); for(auto& v : g) for(auto& e : v) cin >> e;
+#define Input(type, n) type n; cin >> n
+#define VInputs(type, v, n) vector<type> v(n); for(auto& e : v) cin >> e
+#define GInputs(type, g, x, y) Graph<type> g(x, vector<type>(y)); for(auto& v : g) for(auto& e : v) cin >> e
 
-#define Rep(n) for(auto __loop_num = 0; __loop_num < n; __loop_num++)
+#define Rep(i, n) for(auto i = 0; i < n; ++i)
 #define Foreach(e, v) for(auto&& e : v)
 
 #define Debug(x) cerr << "\t(line:" << __LINE__ << ") - " << #x << ": " << x << endl;
@@ -125,6 +132,6 @@ struct Point {
 
 int main() {
     //TODO
-    
+
     return 0;
 }
