@@ -62,7 +62,7 @@
             "args": [
                 "-r",
                 "-g",
-                "${workspaceFolder}/${input:contestName}/${input:problemName}.cpp:103:4",
+                "${workspaceFolder}/${input:contestName}/${input:problemName}.cpp:128:4",
             ]
         },
         {
@@ -82,20 +82,9 @@
             "default": "ABC"
         },
         {
-            "type": "pickString",
+            "type": "promptString",
             "id": "problemName",
             "description": "Name your problem.",
-            "options": [
-                "A",
-                "B",
-                "C",
-                "D",
-                "E",
-                "F",
-                "G",
-                "H",
-                "Ex"
-            ],
             "default": "A"
         }
     ]
