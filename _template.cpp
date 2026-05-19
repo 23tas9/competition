@@ -47,9 +47,9 @@ constexpr int64_t Now() { return std::chrono::duration_cast<std::chrono::millise
 #define YesNo(flag) cout << (flag ? "Yes" : "No") << endl;
 #define yesno(flag) cout << (flag ? "yes" : "no") << endl;
 
-#define INPUT(n) int n; cin >> n;
-#define INPUTS(n, v, type) vector<type> v(n); for(auto& e : v) cin >> e;
-#define GINPUTS(n, g, type) Graph<type> g(n, vector<type>(n)); for(auto& v : g) for(auto& e : v) cin >> e;
+#define Input(n) int n; cin >> n;
+#define Inputs(n, v, type) vector<type> v(n); for(auto& e : v) cin >> e;
+#define GInputs(n, g, type) Graph<type> g(n, vector<type>(n)); for(auto& v : g) for(auto& e : v) cin >> e;
 
 #define Rep(n) for(auto __loop_num = 0; __loop_num < n; __loop_num++)
 #define Foreach(e, v) for(auto&& e : v)
