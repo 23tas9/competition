@@ -2,6 +2,7 @@
 #include <ios>
 #include <sstream>
 
+#include <bit>
 #include <concepts>
 #include <chrono>
 
@@ -17,10 +18,14 @@
 
 #include <ranges>
 
-using namespace std;
-using namespace literals;
-using namespace ranges;
-using namespace numbers;
+using namespace std::literals;
+using namespace std::ranges;
+using namespace std::numbers;
+
+using std::cout;
+using std::cin;
+using std::string;
+using std::vector;
 
 using ll = long long;
 template<typename T>
@@ -29,9 +34,7 @@ using Graph = vector<vector<T>>;
 template<typename T>
 constexpr T Inf() { return numeric_limits<T>::infinity(); }
 
-constexpr int64_t Now() { return chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch()).count(); }
-
-#define all(obj) (obj).begin(), (obj).end()
+constexpr int64_t Now() { return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count(); }
 
 #define YESNO(flag) cout << (flag ? "YES" : "NO") << endl;
 #define YesNo(flag) cout << (flag ? "Yes" : "No") << endl;
@@ -60,8 +63,8 @@ Foreach(v, g) {\
 cerr << "}" << endl;
 
 template<typename T>
-T Parse(string_view str) {
-    stringstream ss;
+T Parse(std::string_view str) {
+    std::stringstream ss;
     T value;
     ss << str;
     ss >> value;
@@ -107,7 +110,7 @@ struct Point {
         return abs(other.x - x) + abs(other.y - y);
     }
 
-    friend ostream& operator<<(ostream& os, const Point& p) {
+    friend std::ostream& operator<<(std::ostream& os, const Point& p) {
         os << "{ " << p.x << ", " << p.y << " }";
         return os;
     }
