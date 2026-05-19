@@ -3,6 +3,7 @@
 #include <sstream>
 
 #include <concepts>
+#include <chrono>
 
 #include <random>
 
@@ -19,10 +20,16 @@
 using namespace std;
 using namespace literals;
 using namespace ranges;
+using namespace numbers;
 
 using ll = long long;
 template<typename T>
 using Graph = vector<vector<T>>;
+
+template<typename T>
+constexpr T Inf() { return numeric_limits<T>::infinity(); }
+
+constexpr int64_t Now() { return chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch()).count(); }
 
 #define all(obj) (obj).begin(), (obj).end()
 
@@ -30,30 +37,30 @@ using Graph = vector<vector<T>>;
 #define YesNo(flag) cout << (flag ? "Yes" : "No") << endl;
 #define yesno(flag) cout << (flag ? "yes" : "no") << endl;
 
-#define Debug(x) cerr << "\t(line:" << __LINE__ << ") - " << #x << ": " << x << endl;
-#define VDebug(v) \
-cerr << "\t(line): " << __LINE__ << ")\n" << #v << ": { "; \
-for (auto& e : v) cerr << e << ", "; \
-cerr << "}" << endl;
-#define GDebug(g) \
-cerr << "\t(line): " << __LINE__ << ")\n" << #g << ": {\n"; \
-for (auto& v : g) {\
-    cerr << "\t{ ";\
-    for (auto& e : v) \
-        cerr << e << ", "; \
-    cerr << "}\n";\
-}\
-cerr << "}" << endl;
-
-
 #define INPUT(n) int n; cin >> n;
 #define INPUTS(n, v, type) vector<type> v(n); for(auto& e : v) cin >> e;
 #define GINPUTS(n, g, type) Graph<type> g(n, vector<type>(n)); for(auto& v : g) for(auto& e : v) cin >> e;
 
-#define LOOP(n) for(auto __loop_num = 0; __loop_num < n; __loop_num++)
+#define Rep(n) for(auto __loop_num = 0; __loop_num < n; __loop_num++)
+#define Foreach(e, v) for(auto&& e : v)
+
+#define Debug(x) cerr << "\t(line:" << __LINE__ << ") - " << #x << ": " << x << endl;
+#define VDebug(v) \
+cerr << "\t(line): " << __LINE__ << ")\n" << #v << ": { "; \
+Foreach(__elem, v) cerr << __elem << ", "; \
+cerr << "}" << endl;
+#define GDebug(g) \
+cerr << "\t(line): " << __LINE__ << ")\n" << #g << ": {\n"; \
+Foreach(v, g) {\
+    cerr << "\t{ ";\
+    Foreach(__elem, v) \
+        cerr << __elem << ", "; \
+    cerr << "}\n";\
+}\
+cerr << "}" << endl;
 
 template<typename T>
-T parse(string_view str) {
+T Parse(string_view str) {
     stringstream ss;
     T value;
     ss << str;
